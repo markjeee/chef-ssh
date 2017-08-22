@@ -93,7 +93,7 @@ def parse(current)
     else
       line = {}
       # split on whitespace that is not inside of quotes
-      fields = row.split(/(?!\B"[^"]*)\s(?![^"]*"\B)/)
+      fields = row.split(/(?!\B"([^"]|\\")*)\s(?!([^"]|\\")*"\B)/)
       line[:options] = parse_options(fields.shift) unless types.include? fields[0]
       validate_type(fields[0], @path)
       line[:type] = fields[0]
